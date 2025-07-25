@@ -17,10 +17,12 @@ h1, h2{
     width: 100%;
 }
 .displayValue{
-   padding:30px 35px;
+   padding:10px 35px;
     background-color: black;
     border-radius: 47%;
     color: white;
+    font-size: medium;
+    
 }
 .decBtn, .incBtn{
 width: 40px;

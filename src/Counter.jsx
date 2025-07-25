@@ -2,12 +2,16 @@ import React from "react";
 import { useState } from "react";
 import clsx from "clsx";
 import AnimatedNumbers from "react-animated-numbers";
+import { useSpring, animated } from "react-spring";
 
 export default function Counter() {
+ 
   const [count, setCount] = useState(0);
   const [maxLimit, setMaxLimit] = useState(100);
   const [incrementCount, setIncremntCount] = useState(1);
   const [isError, setIsError] = useState(false);
+
+  const props = useSpring({ number: count, from: { number: 0 } });
 
   function minus() {
     const newVal = count - incrementCount;
@@ -17,7 +21,7 @@ export default function Counter() {
 
   function add() {
     const newVal = count + incrementCount;
-    setCount((prev: number) => {
+    setCount((prev) => {
       setIsError(newVal > maxLimit ? true : false);
       return maxLimit >= newVal ? newVal : prev;
     });
@@ -60,17 +64,19 @@ export default function Counter() {
           -
         </button>
         <h2 className="displayValue">
-          <AnimatedNumbers
-            transitions={(index) => ({
-              type: "spring",
-              duration: index + 0.3,
-            })}
+      
+<animated.h2>{props.number.to((n) => n.toFixed(0))}</animated.h2>
+         {/* <AnimatedNumbers
+             transitions={(index) => ({
+                type: "spring",
+                duration: index + 0.3,
+              })}
             animateToNumber={count}
             fontStyle={{
               fontSize: 40,
               color: "red",
             }}
-          ></AnimatedNumbers>
+          />  */}
         </h2>
         <button className="incBtn" onClick={add}>
           +

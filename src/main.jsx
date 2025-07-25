@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom/client';
 import './App.css';
-import Counter from './Counter.tsx';
+import Counter from './Counter';
 
 function App() {
   return (
